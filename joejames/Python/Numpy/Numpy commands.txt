@@ -1,0 +1,155 @@
+https://docs.scipy.org/doc/numpy-1.12.0/reference/
+
+Numpy
+    install Numpy using pip
+    import numpy as np
+    ndarray - an N-dimensional array, which describes a collection of “items” of the same type
+    array(list)                    # constructor
+    asarray(a[, dtype, order])     # Convert the input to an array
+    Constants:
+        ndarray.shape        tuple of array dimensions
+        ndarray.size        number of elements in array
+        ndarray.itemsize    size of one element
+        ndarray.dtype        data type of elements
+        ndarray.flat        1D iterator over elements of array
+    Common Functions
+        np.tolist()
+        np.reshape(a, (3,2))
+        np.swapaxes(axis1, axis2)
+        np.copy()
+        arange()  
+    Statistics Functions:
+        np.sum(a, axis)
+        np.prod
+        np.min
+        np.max
+        np.mean
+        np.std                standard deviation
+		np.var
+        np.sort(axis)
+	Other Functions:
+		String operations
+		logical operations - AND, OR, XOR, NOT, >, <, =, ...
+		trig functions
+		complex numbers (real + imaginary)
+		polynomials
+		2D matrix operations
+		Fourier transforms
+====================================================================================
+import numpy as np
+x = [0,1,2,3,4,5]
+a = np.array(x)
+
+index: a[2]
+
+slice:	a[start:stop:step]
+	a[1:4:2]
+	a[3:]
+	a[:3]
+a.shape
+a.size
+a.itemsize
+a.dtype
+
+b = np.array([[1,2,3], [4,5,6]])
+b.swapaxes(0,1)
+
+a = np.arange(0,6)
+a = np.arange(0,6).reshape(2,3)
+========================================================================================
+import numpy as np
+
+pip install numpy
+pip install numpy --upgrade
+
+import numpy as np
+
+a = np.array([2,3,4])
+
+a = np.arange(1, 12, 2)		# (from, to, step)
+
+a = np.linspace(1, 12, 6)	# (first, last, num_elements) float data type
+
+a.reshape(3,2)
+a = a.reshape(3,2)
+
+a.size
+
+a.shape
+
+a.dtype
+
+a.itemsize
+
+# this works:
+b = np.array([(1.5,2,3), (4,5,6)])
+
+# but this does not work:
+b = np.array(1,2,3)		# square brackets are required
+
+a < 4						# prints True/False
+
+a * 3					# multiplies each element by 3
+a *= 3					# saves result to a
+
+a = np.zeros((3,4))
+
+a = np.ones((2,3))
+
+a = np.array([2,3,4], dtype=np.int16)
+
+a = np.random.random((2,3))
+
+np.set_printoptions(precision=2, suppress=True)		# show 2 decimal places, suppress scientific notation
+
+a = np.random.randint(0,10,5)
+a.sum()
+a.min()
+a.max()
+a.mean()
+a.var()		# variance
+a.std()		# standard deviation
+
+
+a.sum(axis=1)
+a.min(axis=0)
+
+a.argmin()		# index of min element
+a.argmax()		# index of max element
+a.argsort()		# returns array of indices that would put the array in sorted order
+a.sort()		# in place sort
+
+# indexing, slicing, iterating
+a = np.arange(10)**2
+a[2]
+a[2:5]
+
+for i in a:
+	print (i ** 2)
+a[::-1]		# reverses array
+
+for i in a.flat:
+	print (i)
+
+	
+a.transpose()
+
+a.ravel()			# flattens to 1D
+
+# read in csv data file
+data = np.loadtxt("data.txt", dtype=np.uint8, delimiter=",", skiprows=1 )
+# loadtxt does not handle missing values. to handle such exceptions use genfromtxt instead.
+
+data = np.loadtxt("data.txt", dtype=np.uint8, delimiter=",", skiprows=1, usecols=[0,1,2,3])
+
+np.random.shuffle(a)
+
+a = np.random.random(5)
+
+np.random.choice(a)
+
+np.random.random_integers(5,10,2)	# (low, high inclusive, size)
+
+
+
+		
